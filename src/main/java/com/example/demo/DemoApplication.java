@@ -4,6 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.Vector;
 
@@ -47,9 +50,16 @@ public class DemoApplication extends SpringBootServletInitializer {
 	// 	return "I will cause high memory!";
 	// }
 
-	@RequestMapping(value = "/error")
-	public String getBarBySimplePathWithRequestParam() {
-		long badNo = 4/0;
-    	return "creating an error!" + badNo;
+	// @RequestMapping(value = "/error")
+	// public String getBarBySimplePathWithRequestParam() {
+	// 	long badNo = 4/0;
+    // 	return "creating an error!" + badNo;
+	// }
+
+	@RequestMapping(value = "/error/{id}", method = GET)
+	@ResponseBody
+	public String getIDBySimplePathWithPathVariable(
+  		@PathVariable("id") long id) {
+    		return "Get a specific id=" + id;
 	}
 }
