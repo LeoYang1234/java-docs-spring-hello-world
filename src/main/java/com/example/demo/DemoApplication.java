@@ -19,7 +19,7 @@ public class DemoApplication extends SpringBootServletInitializer {
 		return "Hello World!";
 	}
 	@RequestMapping("/helloAzure")
-	String sayHello() {
+	String sayHelloFromAzure() {
 		return "Hello from Azure!";
 	}
 }
