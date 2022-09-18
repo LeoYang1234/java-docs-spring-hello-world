@@ -47,10 +47,8 @@ public class DemoApplication extends SpringBootServletInitializer {
 	// 	return "I will cause high memory!";
 	// }
 
-	@RequestMapping(value = "/ex/{id}", method = GET)
-	@ResponseBody
-	public String getIDBySimplePathWithPathVariable(
-  		@PathVariable long id) {
+	@RequestMapping(value = "/ex/{id}")
+	public String getIDBySimplePathWithPathVariable() {
     		return "Get a specific id=" + id;
 		}
 }
