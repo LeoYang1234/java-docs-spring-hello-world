@@ -47,10 +47,9 @@ public class DemoApplication extends SpringBootServletInitializer {
 	// 	return "I will cause high memory!";
 	// }
 
-	@RequestMapping(value = "/ex/bars", method = GET)
-	@ResponseBody
-	public String getBarBySimplePathWithRequestParam(
-  		@RequestParam("id") long id) {
-    		return "Get a specific Bar with id=" + id;
+	@RequestMapping(value = "/error")
+	public String getBarBySimplePathWithRequestParam() {
+		long badNo = 4/0;
+    	return "creating an error!" + badNo;
 	}
 }
