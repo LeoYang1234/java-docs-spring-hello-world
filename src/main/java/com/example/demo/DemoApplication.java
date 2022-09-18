@@ -36,14 +36,21 @@ public class DemoApplication extends SpringBootServletInitializer {
 		return "I will cause high CPU!";
 	}
 	
-	@RequestMapping("/highMEM")
-	String highMEM() {
-		Vector v = new Vector();
-    	while (true)
-    	{
-      		byte b[] = new byte[1048576];
-      		v.add(b);
-    	}
-		return "I will cause high memory!";
-	}
+	// @RequestMapping("/highMEM")
+	// String highMEM() {
+	// 	Vector v = new Vector();
+    // 	while (true)
+    // 	{
+    //   		byte b[] = new byte[1048576];
+    //   		v.add(b);
+    // 	}
+	// 	return "I will cause high memory!";
+	// }
+
+	@RequestMapping(value = "/ex/{id}", method = GET)
+	@ResponseBody
+	public String getIDBySimplePathWithPathVariable(
+  		@PathVariable long id) {
+    		return "Get a specific id=" + id;
+		}
 }
