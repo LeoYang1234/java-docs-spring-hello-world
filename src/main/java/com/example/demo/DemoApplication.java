@@ -24,11 +24,12 @@ public class DemoApplication extends SpringBootServletInitializer {
 	}
 	@RequestMapping("/highCPU")
 	String highCPU() {
-		final int NUM_TESTS = 1000;
-    	long start = System.nanoTime();
-    	for (int i = 0; i < NUM_TESTS; i++) {
-        spin(500);
-    	}
+		long start  = System.currentTimeMillis();
+        long count = 0;
+        for(long x=0;x<Integer.MAX_VALUE ;x++){
+            count+=1;
+        }
+        long end = System.currentTimeMillis();
 		return "I will cause high CPU!";
 	}
 }
