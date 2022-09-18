@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.Vector;
 
 @SpringBootApplication
 @RestController
@@ -18,10 +19,12 @@ public class DemoApplication extends SpringBootServletInitializer {
 	String sayHello() {
 		return "Hello World!";
 	}
+	
 	@RequestMapping("/helloAzure")
 	String sayHelloFromAzure() {
 		return "Hello from Azure!";
 	}
+	
 	@RequestMapping("/highCPU")
 	String highCPU() {
 		long start  = System.currentTimeMillis();
@@ -31,5 +34,18 @@ public class DemoApplication extends SpringBootServletInitializer {
         }
         long end = System.currentTimeMillis();
 		return "I will cause high CPU!";
+	}
+	
+	@RequestMapping("/highMEM")
+	String highMEM() {
+		Vector v = new Vector();
+    	while (true)
+    	{
+      		byte b[] = new byte[1048576];
+      		v.add(b);
+      		Runtime rt = Runtime.getRuntime();
+			String msg = "I will cause high memory! Now there is only this much free memory left: " + rt.freeMemory();
+    	}
+		return msg;
 	}
 }
