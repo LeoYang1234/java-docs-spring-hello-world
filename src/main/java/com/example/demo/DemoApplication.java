@@ -43,9 +43,7 @@ public class DemoApplication extends SpringBootServletInitializer {
     	{
       		byte b[] = new byte[1048576];
       		v.add(b);
-      		Runtime rt = Runtime.getRuntime();
-			String msg = "I will cause high memory! Now there is only this much free memory left: " + rt.freeMemory();
     	}
-		return msg;
+		return "I will cause high memory!";
 	}
 }
