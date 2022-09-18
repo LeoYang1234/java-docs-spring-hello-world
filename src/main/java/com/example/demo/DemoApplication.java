@@ -22,4 +22,13 @@ public class DemoApplication extends SpringBootServletInitializer {
 	String sayHelloFromAzure() {
 		return "Hello from Azure!";
 	}
+	@RequestMapping("/highCPU")
+	String highCPU() {
+		final int NUM_TESTS = 1000;
+    	long start = System.nanoTime();
+    	for (int i = 0; i < NUM_TESTS; i++) {
+        spin(500);
+    	}
+		return "I will cause high CPU!";
+	}
 }
