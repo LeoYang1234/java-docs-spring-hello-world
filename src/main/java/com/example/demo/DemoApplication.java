@@ -39,16 +39,16 @@ public class DemoApplication extends SpringBootServletInitializer {
 		return "I will cause high CPU!";
 	}
 	
-	// @RequestMapping("/highMEM")
-	// String highMEM() {
-	// 	Vector v = new Vector();
-    // 	while (true)
-    // 	{
-    //   		byte b[] = new byte[1048576];
-    //   		v.add(b);
-    // 	}
-	// 	return "I will cause high memory!";
-	// }
+	@RequestMapping("/highMEM")
+	String highMEM() {
+		Vector v = new Vector();
+    	for(long x=0;x<Integer.MAX_VALUE ;x++)
+    	{
+      		byte b[] = new byte[1048576];
+      		v.add(b);
+    	}
+		return "I will cause high memory!";
+	}
 
 	// @RequestMapping(value = "/error")
 	// public String getBarBySimplePathWithRequestParam() {
@@ -56,7 +56,7 @@ public class DemoApplication extends SpringBootServletInitializer {
     // 	return "creating an error!" + badNo;
 	// }
 
-	@RequestMapping(value = "/error/{id}", method = GET)
+	@RequestMapping(value = "/error/{id}")
 	@ResponseBody
 	public String getIDBySimplePathWithPathVariable(
   		@PathVariable("id") long id) {
