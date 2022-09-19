@@ -50,16 +50,18 @@ public class DemoApplication extends SpringBootServletInitializer {
 		return "I will cause high memory!";
 	}
 
-	// @RequestMapping(value = "/error")
-	// public String getBarBySimplePathWithRequestParam() {
-	// 	long badNo = 4/0;
-    // 	return "creating an error!" + badNo;
-	// }
-
 	@RequestMapping(value = "/error/{id}")
 	@ResponseBody
 	public String getIDBySimplePathWithPathVariable(
   		@PathVariable("id") long id) {
     		return "Get a specific id=" + id;
+	}
+
+	@RequestMapping(value = "/error/{id}/param{num}")
+	@ResponseBody
+	public String getIDandNumByPathVariable(
+  		@PathVariable long id, @PathVariable long num) {
+			long aNum = id/num;
+    		return "Division of the two params are " + aNum;
 	}
 }
