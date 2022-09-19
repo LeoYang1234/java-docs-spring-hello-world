@@ -57,7 +57,7 @@ public class DemoApplication extends SpringBootServletInitializer {
     		return "Get a specific id=" + id;
 	}
 
-	@RequestMapping(value = "/error/{id}/param{num}")
+	@RequestMapping(value = "/error/{id}/param/{num}")
 	@ResponseBody
 	public String getIDandNumByPathVariable(
   		@PathVariable long id, @PathVariable long num) {
