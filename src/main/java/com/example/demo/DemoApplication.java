@@ -61,7 +61,14 @@ public class DemoApplication extends SpringBootServletInitializer {
 	@ResponseBody
 	public String getIDandNumByPathVariable(
   		@PathVariable long id, @PathVariable long num) {
-			long aNum = id/num;
+			try {
+				long aNum = id/num;
+				System.out.println("successfully divided id by num...");
+			}
+			catch(Exception e){
+				System.out.println("catching the error...");
+				e.printStackTrace();
+			}
     		return "Division of the two params are " + aNum;
 	}
 }
